@@ -12,9 +12,9 @@ export const Boxery = ({position}) => {
 
         tick += 0.01;
         meshPosition =  [
-            Math.sin(mesh.current.position.x * tick ) * 10,
-            2,
-            1
+            Math.sin(mesh.current.position.x * tick ) * 1,
+            -5,
+            -1
         ]        
     });
 
@@ -22,6 +22,7 @@ export const Boxery = ({position}) => {
         <mesh
             ref={ mesh }
             position={ meshPosition }
+            castShadow
         >
             <boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
             <meshStandardMaterial color={'orange'} />
