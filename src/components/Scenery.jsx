@@ -5,15 +5,16 @@ import { SceneryLight } from './SceneryLight';
 import { Ground } from './Ground';
 import { softShadows, OrbitControls } from 'drei';
 import { Effects } from './Effects';
-
 softShadows();
 
-function Dolly() {
-    // This one makes the camera move in and out
+const SceneCamera = () => {
     useFrame(({ clock, camera }) => {
-      camera.position.z = Math.sin(clock.getElapsedTime()) * 5
+        camera.position.z = Math.sin(clock.getElapsedTime()) * 5;
+        camera.position.x = Math.sin(clock.getElapsedTime()) * 5;
+        camera.lookAt(-1, 1, -5);
     })
-    return null
+
+    return null;
 }
 
 export const Scenery = () => {
@@ -31,7 +32,7 @@ export const Scenery = () => {
             <Ground />
             <Boxery position={[-1, 1, -5]} />
             <Effects />
-            <Dolly />
+            <SceneCamera />
         </Canvas>
     );
 }

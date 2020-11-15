@@ -11,11 +11,11 @@ export const Boxery = ({position}) => {
         ref.current.rotation.y += 0.01;
 
         tick += 0.01;
-        meshPosition =  [
+        /*meshPosition =  [
             Math.sin(ref.current.position.x * tick ) * 1,
             -5,
             -1
-        ]        
+        ]  */      
     });
 
     return (

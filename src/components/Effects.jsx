@@ -30,8 +30,7 @@ export const Effects = ({ down }) => {
 
   useFrame(({clock}) => {
     glitchTick = Math.abs(Math.sin(clock.getElapsedTime()));
-    //glitchToggle = ~~(glitchTick > 0.8);
-    setToggle(~~(glitchTick > 0.8));
+    // setToggle(~~(glitchTick > 0.8));
     console.log(glitchToggle);
 
     return composer.current.render()
@@ -42,8 +41,8 @@ export const Effects = ({ down }) => {
       <renderPass attachArray='passes' scene={scene} camera={camera} />
       <unrealBloomPass attachArray='passes' args={[aspect, 1.5, 1, 0]} />
       <filmPass attachArray='passes' args={[0.1, 0.62, filmLines, false]} />
-      <glitchPass attachArray='passes' factor={ glitchToggle } />
-      <waterPass attachArray="passes" factor={1.5} />
+      <glitchPass attachArray='passes' factor={ 0 } />
+      <waterPass attachArray="passes" factor={2} />
     </effectComposer>
   )
 }
