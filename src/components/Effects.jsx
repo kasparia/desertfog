@@ -9,7 +9,9 @@ import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass'
 import { GlitchPass } from './shaders/Glitchpass';
 import { WaterPass } from './shaders/Waterpass';
 
-extend({ EffectComposer, ShaderPass, RenderPass, UnrealBloomPass, FilmPass, GlitchPass, WaterPass })
+import { BoxeryShader } from './shaders/BoxeryShader';
+
+extend({ EffectComposer, ShaderPass, RenderPass, UnrealBloomPass, FilmPass, GlitchPass, WaterPass, BoxeryShader })
 
 export const Effects = ({ down }) => {
   const composer = useRef()
@@ -31,7 +33,6 @@ export const Effects = ({ down }) => {
   useFrame(({clock}) => {
     glitchTick = Math.abs(Math.sin(clock.getElapsedTime()));
     // setToggle(~~(glitchTick > 0.8));
-    console.log(glitchToggle);
 
     return composer.current.render()
   }, 1);
@@ -42,7 +43,8 @@ export const Effects = ({ down }) => {
       <unrealBloomPass attachArray='passes' args={[aspect, 1.5, 1, 0]} />
       <filmPass attachArray='passes' args={[0.1, 0.62, filmLines, false]} />
       <glitchPass attachArray='passes' factor={ 0 } />
-      <waterPass attachArray="passes" factor={2} />
+      <waterPass attachArray='passes' />
+      <boxeryShader attachArray='passes' factor={2} />
     </effectComposer>
   )
 }
