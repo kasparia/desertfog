@@ -40,7 +40,7 @@ export const Effects = ({ down }) => {
   return (
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray='passes' scene={scene} camera={camera} />
-      <unrealBloomPass attachArray='passes' args={[aspect, 1.5, 1, 0]} />
+      <unrealBloomPass attachArray='passes' args={[aspect, .5, 0.5, 0]} />
       <filmPass attachArray='passes' args={[0.1, 0.62, filmLines, false]} />
       <glitchPass attachArray='passes' factor={ 0 } />
       <waterPass attachArray='passes' />
