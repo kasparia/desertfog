@@ -21,7 +21,7 @@ export const Scenery = () => {
         <Canvas
             colorManagement
             camera={{ 
-                position: [-5, 5, 5],
+                position: [-5, 3, 5],
                 fov: 60
             }}
             shadowMap
@@ -29,17 +29,7 @@ export const Scenery = () => {
             <fog attach='fog' args={['#cc7b32', 2, 20]} />
             <SceneryLight />
             <Ground />
-            <Boxery position={[5, 1, -2]} />
-            <OrbitControls
-                autoRotate
-                enablePan={false}
-                enableZoom={false}
-                enableDamping
-                dampingFactor={0.5}
-                rotateSpeed={1}
-                maxPolarAngle={Math.PI / 2}
-                minPolarAngle={Math.PI / 2}
-            />
+            <Boxery position={[-1, 1, -5]} />
             <Effects />
             <Dolly />
         </Canvas>
