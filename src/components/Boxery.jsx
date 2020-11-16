@@ -6,30 +6,35 @@ extend({ NewShader })
 
 export const Boxery = ({position}) => {
     const ref = useRef();
-    const { size, viewport, gl, scene, camera, clock } = useThree()
-    // let tick = 0.01;
+    const { size } = useThree()
+    let tick = 0.01;
     let meshPosition = position;
 
     const [shade] = useMemo(() => {
         const shade = new NewShader({
-          time: 0.1,
-          factor: 0.1
+            time: 0.01,
+            factor: 0.1
         });
+    
         return [shade]
-    }, [size]);
+        },
+        [size]
+    );
 
     useFrame(() => {
         ref.current.rotation.x += 0.01;
         ref.current.rotation.y += 0.01;
+        
+        ref.current.material = shade;
+        ref.current.material.uniforms.time.value += 0.01;
 
-        // tick += 0.01;
         /*meshPosition =  [
             Math.sin(ref.current.position.x * tick ) * 1,
             -5,
             -1
         ]  */
 
-        ref.current.material = shade;
+
     });
 
     return (
