@@ -15,13 +15,19 @@ const BoxShader = {
     void main(){  
         vUv = uv;
         mat4 proc = projectionMatrix;
+
+
+        
+        vec3 ff = vec3(vUv, sin(time));
+
         vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
-        gl_Position = projectionMatrix * modelViewPosition * vec4(
-            1.,
-            1.,
-            1., 
-            1.
-        );
+
+        gl_Position =
+          proc
+          * modelViewPosition
+          * vec4(sin(time), 1., 1., 1.)
+        ;
+        
     }`,
 
   fragmentShader: `uniform int byp; //should we apply the glitch ?
@@ -33,7 +39,7 @@ const BoxShader = {
     varying vec2 vUv;
     
     void main() {  
-      if (byp>1) {
+      if (byp<1) {
         /* vec2 uv1 = vUv;
         vec2 uv = gl_FragCoord.xy/resolution.xy;
         float frequency = 6.0;

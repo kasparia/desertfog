@@ -44,7 +44,6 @@ export const Effects = ({ down }) => {
       <filmPass attachArray='passes' args={[0.1, 0.62, filmLines, false]} />
       <glitchPass attachArray='passes' factor={ 0 } />
       <waterPass attachArray='passes' />
-      <boxeryShader attachArray='passes' factor={2} />
     </effectComposer>
   )
 }
